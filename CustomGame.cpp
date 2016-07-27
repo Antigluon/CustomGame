@@ -27,7 +27,7 @@ Position HandleEnemy(Position enemy);
 int	HandleMove(int nextBox, int gridSize);
 bool gameOn = true;
 void HandlePlayer(char input);
-int gamesize = 20;
+int gamesize = 10;
 int enemyMove = 0;
 void exit();
 int dist(Position p1, Position p2);
@@ -89,15 +89,15 @@ int main(){
 				(player.x == enemy5.x && player.y == enemy5.y)
 				) {
 				//printf("Sorry, you're dead.");
-				for(int i = 0; i < 10; i++){
-					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE)
-						, FOREGROUND_RED);
-					system("cls");
-					system("type ..\\LoseMsg.txt");
-					Sleep(50);
-					system("cls");
+				for(int i = 0; i < 2; i++){
 					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE)
 						, FOREGROUND_INTENSITY | FOREGROUND_RED);
+					system("cls");
+					system("type ..\\LoseMsg.txt");
+					Sleep(200);
+					system("cls");
+					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE)
+						, FOREGROUND_RED);
 					system("type ..\\LoseMsg2.txt");
 					Sleep(50);
 				}
