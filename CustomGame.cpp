@@ -2,6 +2,7 @@
 //Player wrapping around the board has been disabled for difficulty
 
 #include "stdafx.h"
+//#include "player.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -16,6 +17,36 @@ using namespace std;
 struct Position {
 	int x;
 	int y;
+};
+
+//Player class. Not actually used in game but could be used.
+class Player {
+public:
+	Player(int x, int y) {
+		move(x, y);
+	}
+	Player(Position pos) {
+		move(pos);
+	}
+	int getx() {
+		return position.x;
+	}
+	int gety() {
+		return position.y;
+	}
+	Position getpos() {
+		return position;
+	}
+	void move(Position pos) {
+		position = pos;		
+	}
+	void move(int x, int y) {
+		position.x = x;
+		position.y = y;
+	}
+private:
+	Position position;
+
 };
 
 struct Position player, target, enemy1, enemy2, enemy4, enemy5;
@@ -37,6 +68,7 @@ long time1;
 
 int main(){
 	srand(time(NULL));
+	PlaySound(TEXT("../moosic.wav"), NULL, SND_ASYNC | SND_FILENAME | SND_LOOP);
 	while(true){
 	//Initial positions
 		enemy1.x = 0, enemy1.y = 1;
@@ -59,7 +91,7 @@ int main(){
 		DrawMap();
 		input = ' ';
 		time1 = GetTickCount();
-		printf("Enter a choice: wasd for, qezc for diagonal movement, or r(estart)\n");
+		printf("Enter a choice: wasd, qezc for diagonal movement, or r(estart)\n");
 		while (GetTickCount() < (time1 + 650)) {
 			if (_kbhit()) {
 				input = _getch();
