@@ -312,10 +312,10 @@ Position HandleEnemy(Position enemy) {
 
 int HandleMove(int nextBox, int gridSize) {
 	if (nextBox < 0) {
-		//nextBox += gridSize;
-		nextBox += 1;
+		//nextBox += gridSize; //for when wrapping
+		nextBox += 1; //disable wrap while disallowing move off board
 	}
-	if (nextBox == gridSize) {
+	if (nextBox == gridSize) { //disable wrap while disallowing move off board
 		return nextBox - 1;
 	}
 	return nextBox % gridSize;
